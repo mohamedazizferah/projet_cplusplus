@@ -1,8 +1,8 @@
 #include "matiere.hpp"
 #include "crud_enseignant.hpp"
+#pragma once
 
 Matiere mat;
-Enseignant e;
 vector<Matiere> MatTab;
 
 void remplirMatiere(vector<Matiere> &MatTab, vector<Enseignant> enss)
@@ -73,9 +73,7 @@ void modifierMat(vector<Matiere> Mat)
 void AddEns(vector<Enseignant> ens, Matiere &mat)
 {
     vector<Enseignant>::iterator i;
-    int Id;
-    e.AddId();
-    if (EnseignantFound(ens, e.Id) == -1)
+    if (EnseignantFound(ens, mat.Ens.Id) == -1)
     {
         cout << " 404 NOT FOUND " << endl;
     }
@@ -83,7 +81,7 @@ void AddEns(vector<Enseignant> ens, Matiere &mat)
     {
         for (i = ens.begin(); i < ens.end(); i++)
         {
-            if ((*i).Id == e.Id)
+            if ((*i).Id == mat.Ens.Id)
             {
                 mat.SetEns((*i));
             }
@@ -136,10 +134,13 @@ void modifierMatiere(vector<Matiere> &MatTab, vector<Enseignant> ens)
         cin >> nommat;
         cout << "Coef : ";
         cin >> coef;
+        cout << "EnsId : ";
+        cin >> mat.Ens.Id;
         AddEns(ens, mat);
         (*pos).SetIdMat(idmat);
         (*pos).SetNomMat(nommat);
         (*pos).SetCoef(coef);
+        (*pos).SetEns(mat.Ens);
         modifierMat(MatTab);
     }
 }

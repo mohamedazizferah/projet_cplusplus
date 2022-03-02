@@ -1,7 +1,7 @@
 #include "crud_note.hpp"
-#include "groupemodule.hpp"
 #include "group.hpp"
 #include "note.hpp"
+#include "crud_GM.hpp"
 
 int main()
 {
@@ -28,9 +28,9 @@ int main()
     // listetudd.push_back(e);
     // listetudd.push_back(e2);
     // listetudd.push_back(e3);
-    listgm.push_back(gm);
-    listgm.push_back(gm2);
-    Groupe g("10", "2eme", "IRM", "info", 5, listgm, listetudd);
+    // listgm.push_back(gm);
+    // listgm.push_back(gm2);
+    // Groupe g("10", "2eme", "IRM", "info", 5, listgm, listetudd);
     NOTE n(mat2, e, 18.6, "DS");
     // mat2.afficher_MAT();
     // mat.afficher_MAT();
@@ -60,12 +60,17 @@ int main()
     // ajouterMat(listmatt3, listens);
     remplirMatiere(listmatt3, listens);
     // ajouterMat(listmatt3, listens);
-    // printMatiere(listmatt3);
     // modifierMatiere(listmatt3, listens);
+    // printMatiere(listmatt3);
     // supprimerMatiere(listmatt3);
     remplirNote(listn, listetudd, listmatt3);
     // ajouterNote(listn, listetudd, listmatt3);
     // printNote(listn);
     // modifierNote(listn, listetudd, listmatt3);
-    supprimerNote(listn);
+    // printNote(listn);
+    // supprimerNote(listn);
+    remplirGM(listgm, listmatt3);
+    ajouterGM(listgm, listmatt3);
+    // modifierGM(listgm, listmatt3);
+    printGM(listgm);
 }

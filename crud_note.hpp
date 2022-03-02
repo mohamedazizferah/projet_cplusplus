@@ -1,11 +1,9 @@
 #include "note.hpp"
 #include "crud_matiere.hpp"
 #include "crud_etudiant.hpp"
+#pragma once
 
 NOTE nott;
-Matiere mati;
-Etudiant etud;
-vector<NOTE> NoteTab;
 
 void remplirNote(vector<NOTE> &NoteTab, vector<Etudiant> et, vector<Matiere> matiere)
 {
@@ -156,9 +154,15 @@ void modifierNote(vector<NOTE> &NoteTab, vector<Etudiant> et, vector<Matiere> ma
         cin >> type;
         cout << "Note : ";
         cin >> note;
+        cout << "Id Etudiant : ";
+        cin >> nott.Etu.Id;
+        cout << "Id Matiere : ";
+        cin >> nott.Mat.IdMat;
+        AddEtudAndMat(mat, et, nott);
         (*pos).SetNote(note);
         (*pos).SetType(type);
-        AddEtudAndMat(mat, et, nott);
+        (*pos).SetEtudiant(nott.Etu);
+        (*pos).SetMatiere(nott.Mat);
         modifierNot(NoteTab);
     }
 }
@@ -172,7 +176,7 @@ void supprimerNote(vector<NOTE> &NoteTab)
     vector<NOTE>::iterator pos;
     if (NoteFound(NoteTab, nott.Type, nott.Mat, nott.Etu) != 1)
     {
-        cout << "Couln't find the student" << endl;
+        cout << "Couln't find the NOTE" << endl;
     }
     else
     {

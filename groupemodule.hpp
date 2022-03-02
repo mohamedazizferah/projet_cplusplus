@@ -16,6 +16,7 @@ public:
     void SetIdGM(string);
     void SetNomGM(string);
     void SetCoefGM(float);
+    void SetListMat(vector<Matiere>);
     void AddIdGM();
     void AddNomGM();
     void AddCoefGM();
@@ -48,7 +49,10 @@ void GroupeModule::SetCoefGM(float c)
 {
     this->CoefGM = c;
 }
-
+void GroupeModule::SetListMat(vector<Matiere> lm)
+{
+    this->ListeMat = lm;
+}
 void GroupeModule::AddIdGM()
 {
     cout << "IdGM : ";

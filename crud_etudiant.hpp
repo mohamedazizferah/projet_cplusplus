@@ -1,4 +1,5 @@
 #include "Etudiant.hpp"
+#pragma once
 
 Etudiant Etud;
 vector<Etudiant> Et;
