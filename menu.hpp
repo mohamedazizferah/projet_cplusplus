@@ -1,4 +1,5 @@
 #include "init.hpp"
+#include "pv.hpp"
 #pragma once
 
 void menu()
@@ -346,7 +347,7 @@ Affichage:
         GmDunGRP(listGRP);
         break;
     case 5:
-        cout << "pv";
+        choixGRP(listGRP);
         break;
     case 6:
         goto MenuPrincipale;

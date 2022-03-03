@@ -1,0 +1,15 @@
+/cout << endl << endl << endl << endl 
+         << "                                  -------------------------------- " << endl;
+    cout << "                                 |" << "              NomGM             |" << endl;
+    cout << "                                 |--------------------------------|" << endl;
+    cout << "                                 |" << "              CoefGM            |" << endl;
+    cout << "                                 |--------------------------------|" << endl;
+    cout << "                                 |          |          |          |" << endl;
+    cout << "                                 |  NomMat  |  NomMat  |  NomMat  |" << endl;
+    cout << "                                 |          |          |          |" << endl;
+    cout << " --------------------------------|--------------------------------|" << endl;
+    cout << "|       Liste des etudiants      |   Coef   |   Coef   |   Coef   |" << endl;
+    cout << "|--------------------------------|--------------------------------|" << endl;
+    cout << "| Num_insc |    Nom   |  Prenom  |  MoyMat  |  MoyMat  |  MoyMat  |" << endl;
+    cout << "|--------------------------------|--------------------------------|" << endl;
+    cout << "|          |          |          |          |          |          |" << endl;/

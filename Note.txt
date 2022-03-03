@@ -1,2 +1,6 @@
-2 ds 3 2
 17 Examen 3 2
+15 DS 3 2
+4 TP 3 2
+14 DS 666 2
+12 Examen 666 1
+200 dd 16 2
