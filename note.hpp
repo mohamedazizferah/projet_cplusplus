@@ -61,8 +61,28 @@ void NOTE::AddNote()
 
 void NOTE::AddType()
 {
-    cout << "Type : ";
-    getline(cin, Type);
+    int i;
+    cout << "choisir Type : ";
+    cout << "1- DS ";
+    cout << "2- Examen ";
+    cout << "3- TP";
+    do
+    {
+        cin >> i;
+        cin.ignore();
+    } while (i < 1 || i > 3);
+    switch (i)
+    {
+    case 1:
+        this->Type = "DS";
+        break;
+    case 2:
+        this->Type = "Examen";
+        break;
+    case 3:
+        this->Type = "TP";
+        break;
+    }
 }
 
 void NOTE::afficher_NOTE()

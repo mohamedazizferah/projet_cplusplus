@@ -1,2 +1,6 @@
 3 zatla 12 12
-2 physique 2 12
+2 physique 2 10
+1 math 2 12
+0 crack 2 10
+10 weed 2 12
+20 idkwhat 2 10

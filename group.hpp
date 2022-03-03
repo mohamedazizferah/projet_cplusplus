@@ -19,6 +19,8 @@ public:
     void SetNiveau(string);
     void SetDiplome(string);
     void SetSpecialite(string);
+    void SetGM(vector<GroupeModule>);
+    void SetEtudiant(vector<Etudiant>);
     void SetNum_G(int);
     void AddIdGRP();
     void AddNiveau();
@@ -63,6 +65,15 @@ void Groupe::SetSpecialite(string s)
     this->Specialite = s;
 }
 
+void Groupe::SetGM(vector<GroupeModule> gm)
+{
+    this->ListeModules = gm;
+}
+
+void Groupe::SetEtudiant(vector<Etudiant> et)
+{
+    this->ListeEtudiants = et;
+}
 void Groupe::SetNum_G(int n)
 {
     this->Num_G = n;

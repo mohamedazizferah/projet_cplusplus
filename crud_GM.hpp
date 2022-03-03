@@ -91,7 +91,9 @@ void modifierGmList(vector<GroupeModule> GM)
 void AddMat(vector<Matiere> matiere, GroupeModule &Gm)
 {
     string id;
+    int found;
     int mats, iter;
+    found = 0;
     vector<Matiere>::iterator i;
     cout << "how many subjects will you add : ";
     cin >> mats;
@@ -105,6 +107,7 @@ void AddMat(vector<Matiere> matiere, GroupeModule &Gm)
         }
         else
         {
+            found++;
             for (i = matiere.begin(); i < matiere.end(); i++)
             {
                 if ((*i).IdMat == id)
@@ -112,8 +115,11 @@ void AddMat(vector<Matiere> matiere, GroupeModule &Gm)
                     Gm.ListeMat.push_back(*i);
                 }
             }
-            enregistrerGM();
         }
+    }
+    if (found > 0)
+    {
+        enregistrerGM();
     }
 }
 
@@ -122,7 +128,7 @@ void ajouterGM(vector<GroupeModule> &GmTab, vector<Matiere> mat)
     gm.AddIdGM();
     if (GMFound(GmTab, gm.IdGM) == 1)
     {
-        cout << " NOTE Already exist" << endl;
+        cout << " Groupe Module Already exist" << endl;
     }
     else
     {
@@ -161,8 +167,6 @@ void modifierGM(vector<GroupeModule> &GMTab, vector<Matiere> mat)
         (*pos).SetIdGM(idgm);
         (*pos).SetNomGM(nomgm);
         (*pos).SetCoefGM(coef);
-        AddMat(mat, gm);
-        (*pos).SetListMat(gm.ListeMat);
         modifierGmList(GMTab);
     }
 }
@@ -174,7 +178,7 @@ void supprimerGM(vector<GroupeModule> &GMTab)
     vector<GroupeModule>::iterator pos;
     if (GMFound(GMTab, gm.IdGM) != 1)
     {
-        cout << "Couln't find the student" << endl;
+        cout << "Couln't find the Groupe Module" << endl;
     }
     else
     {
@@ -197,5 +201,126 @@ void printGM(vector<GroupeModule> GMTab)
     for (i = GMTab.begin(); i < GMTab.end(); i++)
     {
         cout << (*i);
+    }
+}
+
+void AddMatInGM(vector<GroupeModule> &GMTab, vector<Matiere> mat)
+{
+
+    string id;
+    int found;
+    int mats, iter;
+    found = 0;
+    vector<GroupeModule>::iterator i;
+    vector<GroupeModule>::iterator pos;
+    vector<Matiere>::iterator j;
+    gm.AddIdGM();
+    if (GMFound(GMTab, gm.IdGM) != 1)
+    {
+        cout << " Groupe Module does not exist" << endl;
+    }
+    else
+    {
+        for (i = GMTab.begin(); i < GMTab.end(); i++)
+        {
+            if (gm.IdGM == (*i).IdGM)
+            {
+                pos = i;
+            }
+        }
+        cout << "IdMat : ";
+        cin >> id;
+        cin.ignore();
+        if (MatiereFound(mat, id) == -1)
+        {
+            cout << " 404 NOT FOUND " << endl;
+        }
+        else
+        {
+            if (MatiereFound((*pos).ListeMat, id) == 1)
+            {
+                cout << " Subject already exists in your Groupe module " << endl;
+            }
+            else
+            {
+                found++;
+                for (j = mat.begin(); j < mat.end(); j++)
+                {
+                    if ((*j).IdMat == id)
+                    {
+                        (*pos).ListeMat.push_back(*j);
+                    }
+                }
+            }
+        }
+    }
+    if (found > 0)
+    {
+        modifierGmList(GMTab);
+    }
+}
+
+void DeleteMatFromGM(vector<GroupeModule> &GMTab)
+{
+    gm.AddIdGM();
+    string id;
+    vector<GroupeModule>::iterator i;
+    vector<GroupeModule>::iterator pos;
+    vector<Matiere>::iterator j;
+    vector<Matiere>::iterator posMat;
+    if (GMFound(GMTab, gm.IdGM) != 1)
+    {
+        cout << "Couln't find the Groupe Module" << endl;
+    }
+    else
+    {
+        cout << "IdMat : ";
+        cin >> id;
+        for (i = GMTab.begin(); i < GMTab.end(); i++)
+        {
+            if (gm.IdGM == (*i).IdGM)
+            {
+                pos = i;
+            }
+        }
+        for (j = (*pos).ListeMat.begin(); j < (*pos).ListeMat.end(); j++)
+        {
+            if (id == (*j).IdMat)
+            {
+                posMat = j;
+            }
+        }
+        (*pos).ListeMat.erase(posMat);
+        modifierGmList(GMTab);
+    }
+}
+
+void MatiereDunModule(vector<GroupeModule> GMTab)
+{
+    string id;
+    vector<GroupeModule>::iterator i;
+    vector<GroupeModule>::iterator pos;
+    vector<Matiere>::iterator j;
+    cout << "IdGM : ";
+    cin >> id;
+    if (GMFound(GMTab, id) != 1)
+    {
+        cout << "Groupe Modules does not exist";
+    }
+    else
+    {
+        for (i = GMTab.begin(); i < GMTab.end(); i++)
+        {
+            if ((*i).IdGM == id)
+            {
+                pos = i;
+            }
+        }
+        for (j = (*pos).ListeMat.begin(); j < (*pos).ListeMat.end(); j++)
+        {
+            cout << "nom matiere :" << (*j).NomMat << endl;
+            cout << "coef matiere :" << (*j).Coef << endl;
+            cout << "nom Enseignant :" << (*j).Ens.Nom << endl;
+        }
     }
 }

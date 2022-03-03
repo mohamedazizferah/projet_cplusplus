@@ -150,8 +150,7 @@ void modifierNote(vector<NOTE> &NoteTab, vector<Etudiant> et, vector<Matiere> ma
                 pos = i;
             }
         }
-        cout << "Type : ";
-        cin >> type;
+        (*pos).AddType();
         cout << "Note : ";
         cin >> note;
         cout << "Id Etudiant : ";
@@ -160,7 +159,6 @@ void modifierNote(vector<NOTE> &NoteTab, vector<Etudiant> et, vector<Matiere> ma
         cin >> nott.Mat.IdMat;
         AddEtudAndMat(mat, et, nott);
         (*pos).SetNote(note);
-        (*pos).SetType(type);
         (*pos).SetEtudiant(nott.Etu);
         (*pos).SetMatiere(nott.Mat);
         modifierNot(NoteTab);
@@ -199,5 +197,28 @@ void printNote(vector<NOTE> NoteTab)
     for (i = NoteTab.begin(); i < NoteTab.end(); i++)
     {
         cout << (*i);
+    }
+}
+void StudentNotes(vector<NOTE> NoteTab, vector<Etudiant> et)
+{
+    int id;
+    cout << "Student ID : ";
+    cin >> id;
+    if (EtudiantFound(et, id) != 1)
+    {
+        cout << "Student does not exist";
+    }
+    else
+    {
+        vector<NOTE>::iterator i;
+        for (i = NoteTab.begin(); i < NoteTab.end(); i++)
+        {
+            if ((*i).Etu.Id == id)
+            {
+                cout << "Note : " << (*i).Note << endl;
+                cout << "Matiere : " << (*i).Mat.NomMat << endl;
+                cout << "Type : " << (*i).Type << endl;
+            }
+        }
     }
 }
