@@ -9,33 +9,64 @@ void remplirGM(vector<GroupeModule> &GMTab, vector<Matiere> matiere)
     string idgm, idgm2, nomgm, idmat;
     float coefgm;
     vector<Matiere> mat;
-    GroupeModule newGM(idgm, nomgm, coefgm, mat);
     unsigned int size = MatTab.size();
     ifstream fin("GM.txt");
     ifstream fin2("GmMats.txt");
-    vector<Matiere>::iterator i;
-    if (fin.is_open())
+    vector<Matiere>::iterator i, d, f;
+    //     if (fin.is_open())
+    //     {
+    //         while (fin >> idgm >> nomgm >> coefgm)
+    //         {
+    //             newGM.SetIdGM(idgm);
+    //             newGM.SetNomGM(nomgm);
+    //             newGM.SetCoefGM(coefgm);
+    //             if (fin2.is_open())
+    //             {
+    //                 while (fin2 >> idgm2 >> idmat)
+    //                 {
+    //                     mat.clear();
+    //                     for (i = matiere.begin(); i < matiere.end(); i++)
+    //                     {
+    //                         if ((*i).IdMat == idmat && idgm2 == newGM.IdGM)
+    //                         {
+    //                             mat.push_back(*i);
+    //                         }
+    //                     }
+    //                     newGM.SetListMat(mat);
+    //                 }
+    //             }
+    //             // newGM.SetListMat(mat);
+    //             GMTab.push_back(newGM);
+    //         }
+    //     }
+
+    if (fin.is_open() && fin2.is_open())
     {
         while (fin >> idgm >> nomgm >> coefgm)
         {
+            vector<Matiere> mmattab;
+            GroupeModule newGM;
             newGM.SetIdGM(idgm);
             newGM.SetNomGM(nomgm);
             newGM.SetCoefGM(coefgm);
-            if (fin2.is_open())
+
+            while (fin2 >> idgm2 >> idmat)
             {
-                while (fin2 >> idgm2 >> idmat)
+
+                d = matiere.begin();
+                f = matiere.end();
+                for (i = d; i < f; i++)
                 {
-                    for (i = matiere.begin(); i < matiere.end(); i++)
+                    if ((*i).IdMat == idmat && idgm2 == idgm)
                     {
-                        if ((*i).IdMat == idmat && idgm2 == idgm)
-                        {
-                            mat.push_back(*i);
-                        }
+                        mmattab.push_back(*i);
                     }
                 }
             }
-            newGM.SetListMat(mat);
+            newGM.SetListMat(mmattab);
             GMTab.push_back(newGM);
+            fin2.clear();
+            fin2.seekg(0);
         }
     }
 }
@@ -295,7 +326,7 @@ void DeleteMatFromGM(vector<GroupeModule> &GMTab)
     }
 }
 
-void MatiereDunModule(vector<GroupeModule> GMTab)
+void MatiereDunModule(vector<GroupeModule> &GMTab)
 {
     string id;
     vector<GroupeModule>::iterator i;
@@ -309,14 +340,14 @@ void MatiereDunModule(vector<GroupeModule> GMTab)
     }
     else
     {
-        for (i = GMTab.begin(); i < GMTab.end(); i++)
+        for (i = GMTab.begin(); i != GMTab.end(); i++)
         {
             if ((*i).IdGM == id)
             {
                 pos = i;
             }
         }
-        for (j = (*pos).ListeMat.begin(); j < (*pos).ListeMat.end(); j++)
+        for (j = (*pos).ListeMat.begin(); j != (*pos).ListeMat.end(); j++)
         {
             cout << "nom matiere :" << (*j).NomMat << endl;
             cout << "coef matiere :" << (*j).Coef << endl;

@@ -9,9 +9,7 @@ void remplirG(vector<Groupe> &GTab, vector<Etudiant> etudiant, vector<GroupeModu
 {
     string idgm, idg, idg2, idg3, nivg, dip, spec;
     int num, idEt;
-    vector<Etudiant> et;
-    vector<GroupeModule> gm;
-    Groupe newG(idg, nivg, dip, spec, num, gm, et);
+
     unsigned int size = MatTab.size();
     ifstream fin("Group.txt");
     ifstream fin2("GroupGMs.txt");
@@ -22,6 +20,9 @@ void remplirG(vector<Groupe> &GTab, vector<Etudiant> etudiant, vector<GroupeModu
     {
         while (fin >> idg >> nivg >> dip >> spec >> num)
         {
+            vector<Etudiant> et;
+            vector<GroupeModule> gm;
+            Groupe newG;
             newG.SetIdGRP(idg);
             newG.SetNiveau(nivg);
             newG.SetDiplome(dip);
@@ -56,6 +57,10 @@ void remplirG(vector<Groupe> &GTab, vector<Etudiant> etudiant, vector<GroupeModu
             newG.SetEtudiant(et);
             newG.SetGM(gm);
             GTab.push_back(newG);
+            fin2.clear();
+            fin2.seekg(0);
+            fin3.clear();
+            fin3.seekg(0);
         }
     }
 }

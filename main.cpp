@@ -3,5 +3,6 @@
 int main()
 {
     init();
-    menu();
+    // menu();
+    choixGRP(listGRP);
 }

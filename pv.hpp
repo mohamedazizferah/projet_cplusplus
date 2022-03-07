@@ -25,7 +25,7 @@ void tabEtud()
     cout << "                                 |";
     for (gmiter = groupeAffichage.ListeModules.begin(); gmiter != groupeAffichage.ListeModules.end(); gmiter++)
     {
-        cout << setw(15) << (*gmiter).NomGM << setw(15) << "|";
+        cout << left << setw(29) << (*gmiter).NomGM << "|";
     }
     cout << "    m          |     r     |      m      |";
     cout << endl;
@@ -39,7 +39,7 @@ void tabEtud()
     cout << "                                 |";
     for (gmiter = groupeAffichage.ListeModules.begin(); gmiter != groupeAffichage.ListeModules.end(); gmiter++)
     {
-        cout << setw(15) << (*gmiter).CoefGM << setw(15) << "|";
+        cout << left << setw(29) << (*gmiter).CoefGM << "|";
     }
     cout << "    y          |     s     |      n      |";
     cout << endl;
@@ -55,7 +55,10 @@ void tabEtud()
     {
         for (matiter = (*gmiter).ListeMat.begin(); matiter != (*gmiter).ListeMat.end(); matiter++)
         {
+
             cout << setw(9) << left << (*matiter).NomMat << "|";
+
+            notes++;
         }
     }
     cout << "    n          |     l     |      i      |";
@@ -111,7 +114,7 @@ void tabEtud()
             for (matiter = (*gmiter).ListeMat.begin(); matiter != (*gmiter).ListeMat.end(); matiter++)
             {
                 cout << setw(5) << CalcmoyOneMat(listDesNotes, (*matiter).IdMat, (*i).Id) << setw(5) << "|";
-                notes++;
+
                 if (CalcmoyOneMat(listDesNotes, (*matiter).IdMat, (*i).Id) > 0)
                 {
                     res = res + CalcmoyOneMat(listDesNotes, (*matiter).IdMat, (*i).Id);
@@ -161,6 +164,7 @@ void tabEtud()
         }
         cout << "---------------|-----------|-------------|";
         cout << endl;
+        res = 0;
     }
 }
 
