@@ -208,7 +208,7 @@ void tabEtud()
         }
         else
         {
-            cout << "              |";
+            cout << "            |";
         }
         cout << endl;
         cout << setw(27) << "|--------------------------------|";
