@@ -3,6 +3,6 @@
 int main()
 {
     init();
-    // menu();
-    choixGRP(listGRP);
+    menu();
+    // choixGRP(listGRP);
 }

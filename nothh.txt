@@ -13,3 +13,33 @@
     cout << "| Num_insc |    Nom   |  Prenom  |  MoyMat  |  MoyMat  |  MoyMat  |" << endl;
     cout << "|--------------------------------|--------------------------------|" << endl;
     cout << "|          |          |          |          |          |          |" << endl;/
+
+
+
+9 DS 4 1
+11 TP 4 1
+7.5 Examen 4 1
+17 DS 4 2
+10 TP 4 2
+5 Examen 4 2
+16 DS 4 3
+17 TP 4 3
+8 Examen 4 3
+4 DS 4 4
+4 TP 4 4
+9.75 Examen 4 4
+7.25 DS 4 5
+8 TP 4 5
+7.75 Examen 4 5
+6 DS 4 6
+17.5 TP 4 6
+7.5 Examen 4 6
+10 DS 4 7
+11.75 TP 4 7
+14.25 Examen 4 7
+7 DS 4 8
+18 TP 4 8
+18 Examen 4 8
+9 DS 4 9
+14 TP 4 9
+9 Examen 4 9
